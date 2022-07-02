@@ -120,6 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
@@ -129,6 +132,8 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourgmailhere'
-EMAIL_HOST_PASSWORD = 'yourgmailpassword'
+EMAIL_HOST_USER = 'yourgmail'
+EMAIL_HOST_PASSWORD = 'your-app-password(Not actual password)' #this is app password not your actual google account pass 
+#in order to create app password go to Manage google account>Security>Enable 2FA after that enable APP passsowrd
+#for Mail SMTP
 EMAIL_PORT = 587

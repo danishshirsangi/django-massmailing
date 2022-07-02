@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css" integrity="sha512-YzwGgFdO1NQw1CZkPoGyRkEnUTxPSbGWXvGiXrWk8IeSqdyci0dEDYdLLjMxq1zCoU0QBa4kHAFiRhUL3z2bow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'upload.css'%}">
+    <title>Mass Mail Dispatcher</title>
+</head>
+<body>
+    
+    
+    <header>
+        <nav>
+            <h1>MassMailer.</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="main-content">
+            <h1>Upload CSV File</h1>
+        
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="file-input">
+                    <input type="text" name="filename" style="display: none;" placeholder="Enter File Name"> <br>
+                    <input class="form-control" name="filecs" style="max-width: 300px;" type="file" id="formFile"> <br>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="table-container" id="tables">
+        <div class="table-wrapper">
+            <div class="fixTableHead">
+                <table class="fixed_header">
+                    <thead>
+                      <tr>
+                        <th>Sr. No</th>
+                        <th>Valid Mail</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in valid %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="fixTableHead">
+                <table class="fixed_header">
+                    <thead>
+                      <tr>
+                        <th>Sr. No</th>
+                        <th>Valid Mail</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in invalid %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="btns">
+            <a href="/sendmails">Send to Valid Mails</a>
+            <a href="/sendagain">Upload Again</a>
+        </div>
+    </div>
+
+    <script>
+        const file = document.querySelector('#file');
+        file.addEventListener('change', (e) => {
+        // Get the selected file
+        const [file] = e.target.files;
+        // Get the file name and size
+        const { name: fileName, size } = file;
+        // Convert size in bytes to kilo bytes
+        const fileSize = (size / 1000).toFixed(2);
+        // Set the text content
+        const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+        document.querySelector('.file-name').textContent = fileNameAndSize;
+        });
+    </script>
+
+</body>
+</html>

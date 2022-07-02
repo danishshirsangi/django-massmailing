@@ -1,0 +1,48 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css" integrity="sha512-YzwGgFdO1NQw1CZkPoGyRkEnUTxPSbGWXvGiXrWk8IeSqdyci0dEDYdLLjMxq1zCoU0QBa4kHAFiRhUL3z2bow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'send.css'%}">
+    <title>Mass Mail Dispatcher</title>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <h1>MassMailer.</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <form action="" method="POST">
+            {% csrf_token%}
+            <div class="form-container">
+                <h2>Enter Subject and Message</h2>
+                <input type="text" name="subject" placeholder="Subject" autocomplete="off"> <br>
+                <input type="text" name="subject" placeholder="Subject" value="{{def_mail}}" disabled> <br>
+                <textarea name="message" placeholder="Message"></textarea> <br>
+                <input type="submit" value="Submit"> <br>
+            </div>
+        </form>
+
+        <div class="instructions">
+            <p>How to change the default senders mail? Follow the below steps</p>
+            <ul>
+                <li>Go To Project Folder and Open <b>settings.py</b></li>
+                <li>In settings.py replace <b>EMAIL_HOST_USER</b> & <b>EMAIL_HOST_PASSWORD</b> with your email and pass</li>
+            </ul>
+        </div>
+    </section>
+
+   
+
+</body>
+</html>

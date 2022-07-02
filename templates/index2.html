@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css" integrity="sha512-YzwGgFdO1NQw1CZkPoGyRkEnUTxPSbGWXvGiXrWk8IeSqdyci0dEDYdLLjMxq1zCoU0QBa4kHAFiRhUL3z2bow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Mass Mail Dispatcher</title>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <h1>MassMailer.</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="main-content">
+            <p>Send mails to multiple user’s <br>in a single click</p>
+            <a href="proceed">Start</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Download Source Code on</p>
+        <a href=""><i class="bi bi-github"></i></a>
+    </footer>
+</body>
+</html>

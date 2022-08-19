@@ -132,8 +132,8 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yourgmail'
-EMAIL_HOST_PASSWORD = 'your-app-password(Not actual password)' #this is app password not your actual google account pass 
+EMAIL_HOST_USER = 'Your Gmail'
+EMAIL_HOST_PASSWORD = 'your-app-password(Not Actual G-ACCOUNT pass)' #this is app password not your actual google account pass 
 #in order to create app password go to Manage google account>Security>Enable 2FA after that enable APP passsowrd
 #for Mail SMTP
 EMAIL_PORT = 587

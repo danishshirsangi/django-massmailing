@@ -1,21 +1,20 @@
 import threading
+from tkinter import E
 from validate_email import validate_email
-from django.core.mail import send_mail
+from django.core.mail import send_mail,EmailMessage
 
 class SendMailClass(threading.Thread):
-    def __init__(self, sub, msg, sender_mail, mails_list):
+    def __init__(self, mail):
         threading.Thread.__init__(self)
-        self.message = msg
-        self.subject = sub
-        self.sender = sender_mail
-        self.mails_list = mails_list
+        self.mail = mail
+
+    def run(self):
+        print("Sending Mails",self.mail)
         try:
-            print("Sending Mails")
-            print(self.mails_list)
-            print(send_mail(self.subject, self.message, self.sender, self.mails_list, fail_silently=False))
+            print(self.mail.send())
         except Exception as e:
             print(e)
-
+    
 class GatherEmails(threading.Thread):
     def __init__(self, file):
         threading.Thread.__init__(self)
